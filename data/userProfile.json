@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "firstName": "Admin",
+        "lastName": "User",
+        "dateOfBirth": "1980-01-01",
+        "gender": "Other",
+        "userId": "1"
+    },
+    {
+        "id": 2,
+        "firstName": "John",
+        "lastName": "Doe",
+        "dateOfBirth": "1990-02-02",
+        "gender": "Male",
+        "userId": "2"
+    },
+    {
+        "id": 3,
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "dateOfBirth": "1985-04-04",
+        "gender": "Female",
+        "userId": "3"
+    },
+    {
+        "id": 4,
+        "firstName": "Bob",
+        "lastName": "White",
+        "dateOfBirth": "1988-05-05",
+        "gender": "Male",
+        "userId": "4"
+    },
+    {
+        "id": 5,
+        "firstName": "Linda",
+        "lastName": "Johnson",
+        "dateOfBirth": "1992-03-03",
+        "gender": "Female",
+        "userId": "5"
+    }
+]

@@ -1,0 +1,272 @@
+[
+    {
+        "id": 1,
+        "name": "AAPL",
+        "description": "Apple Inc. stock",
+        "price": 150.0,
+        "stock": 1000,
+        "type": "Saham",
+        "companyName": "Apple Inc."
+    },
+    {
+        "id": 2,
+        "name": "GOOGL",
+        "description": "Alphabet Inc. stock",
+        "price": 2500.0,
+        "stock": 500,
+        "type": "Saham",
+        "companyName": "Alphabet Inc."
+    },
+    {
+        "id": 3,
+        "name": "MSFT",
+        "description": "Microsoft Corporation stock",
+        "price": 300.0,
+        "stock": 800,
+        "type": "Saham",
+        "companyName": "Microsoft Corporation"
+    },
+    {
+        "id": 4,
+        "name": "AMZN",
+        "description": "Amazon.com Inc. stock",
+        "price": 3500.0,
+        "stock": 400,
+        "type": "Saham",
+        "companyName": "Amazon.com Inc."
+    },
+    {
+        "id": 5,
+        "name": "TSLA",
+        "description": "Tesla Inc. stock",
+        "price": 700.0,
+        "stock": 1200,
+        "type": "Saham",
+        "companyName": "Tesla Inc."
+    },
+    {
+        "id": 6,
+        "name": "BRK.B",
+        "description": "Berkshire Hathaway Inc. stock",
+        "price": 280.0,
+        "stock": 600,
+        "type": "Saham",
+        "companyName": "Berkshire Hathaway Inc."
+    },
+    {
+        "id": 7,
+        "name": "JPM",
+        "description": "JPMorgan Chase & Co. stock",
+        "price": 160.0,
+        "stock": 700,
+        "type": "Saham",
+        "companyName": "JPMorgan Chase & Co."
+    },
+    {
+        "id": 8,
+        "name": "V",
+        "description": "Visa Inc. stock",
+        "price": 230.0,
+        "stock": 900,
+        "type": "Saham",
+        "companyName": "Visa Inc."
+    },
+    {
+        "id": 9,
+        "name": "PG",
+        "description": "Procter & Gamble Co. stock",
+        "price": 140.0,
+        "stock": 1100,
+        "type": "Saham",
+        "companyName": "Procter & Gamble Co."
+    },
+    {
+        "id": 10,
+        "name": "JNJ",
+        "description": "Johnson & Johnson stock",
+        "price": 180.0,
+        "stock": 1000,
+        "type": "Saham",
+        "companyName": "Johnson & Johnson"
+    },
+    {
+        "id": 11,
+        "name": "WMT",
+        "description": "Walmart Inc. stock",
+        "price": 150.0,
+        "stock": 1300,
+        "type": "Saham",
+        "companyName": "Walmart Inc."
+    },
+    {
+        "id": 12,
+        "name": "DIS",
+        "description": "The Walt Disney Company stock",
+        "price": 175.0,
+        "stock": 1000,
+        "type": "Saham",
+        "companyName": "The Walt Disney Company"
+    },
+    {
+        "id": 13,
+        "name": "XOM",
+        "description": "Exxon Mobil Corporation stock",
+        "price": 60.0,
+        "stock": 2000,
+        "type": "Saham",
+        "companyName": "Exxon Mobil Corporation"
+    },
+    {
+        "id": 14,
+        "name": "BAC",
+        "description": "Bank of America Corporation stock",
+        "price": 40.0,
+        "stock": 2500,
+        "type": "Saham",
+        "companyName": "Bank of America Corporation"
+    },
+    {
+        "id": 15,
+        "name": "NFLX",
+        "description": "Netflix Inc. stock",
+        "price": 520.0,
+        "stock": 800,
+        "type": "Saham",
+        "companyName": "Netflix Inc."
+    },
+    {
+        "id": 16,
+        "name": "VZ",
+        "description": "Verizon Communications Inc. stock",
+        "price": 55.0,
+        "stock": 1800,
+        "type": "Saham",
+        "companyName": "Verizon Communications Inc."
+    },
+    {
+        "id": 17,
+        "name": "PFE",
+        "description": "Pfizer Inc. stock",
+        "price": 42.0,
+        "stock": 2100,
+        "type": "Saham",
+        "companyName": "Pfizer Inc."
+    },
+    {
+        "id": 18,
+        "name": "KO",
+        "description": "The Coca-Cola Company stock",
+        "price": 54.0,
+        "stock": 1900,
+        "type": "Saham",
+        "companyName": "The Coca-Cola Company"
+    },
+    {
+        "id": 19,
+        "name": "PEP",
+        "description": "PepsiCo Inc. stock",
+        "price": 150.0,
+        "stock": 1700,
+        "type": "Saham",
+        "companyName": "PepsiCo Inc."
+    },
+    {
+        "id": 20,
+        "name": "MRNA",
+        "description": "Moderna Inc. stock",
+        "price": 230.0,
+        "stock": 1500,
+        "type": "Saham",
+        "companyName": "Moderna Inc."
+    },
+    {
+        "id": 21,
+        "name": "NKE",
+        "description": "Nike Inc. stock",
+        "price": 130.0,
+        "stock": 1600,
+        "type": "Saham",
+        "companyName": "Nike Inc."
+    },
+    {
+        "id": 22,
+        "name": "T",
+        "description": "AT&T Inc. stock",
+        "price": 28.0,
+        "stock": 2200,
+        "type": "Saham",
+        "companyName": "AT&T Inc."
+    },
+    {
+        "id": 23,
+        "name": "MA",
+        "description": "Mastercard Inc. stock",
+        "price": 370.0,
+        "stock": 900,
+        "type": "Saham",
+        "companyName": "Mastercard Inc."
+    },
+    {
+        "id": 24,
+        "name": "NVDA",
+        "description": "NVIDIA Corporation stock",
+        "price": 700.0,
+        "stock": 1200,
+        "type": "Saham",
+        "companyName": "NVIDIA Corporation"
+    },
+    {
+        "id": 25,
+        "name": "INTC",
+        "description": "Intel Corporation stock",
+        "price": 55.0,
+        "stock": 1800,
+        "type": "Saham",
+        "companyName": "Intel Corporation"
+    },
+    {
+        "id": 26,
+        "name": "PYPL",
+        "description": "PayPal Holdings Inc. stock",
+        "price": 280.0,
+        "stock": 1400,
+        "type": "Saham",
+        "companyName": "PayPal Holdings Inc."
+    },
+    {
+        "id": 27,
+        "name": "IBM",
+        "description": "International Business Machines Corporation stock",
+        "price": 145.0,
+        "stock": 1600,
+        "type": "Saham",
+        "companyName": "International Business Machines Corporation"
+    },
+    {
+        "id": 28,
+        "name": "ORCL",
+        "description": "Oracle Corporation stock",
+        "price": 88.0,
+        "stock": 1700,
+        "type": "Saham",
+        "companyName": "Oracle Corporation"
+    },
+    {
+        "id": 29,
+        "name": "CSCO",
+        "description": "Cisco Systems Inc. stock",
+        "price": 55.0,
+        "stock": 2000,
+        "type": "Saham",
+        "companyName": "Cisco Systems Inc."
+    },
+    {
+        "id": 30,
+        "name": "ADBE",
+        "description": "Adobe Inc. stock",
+        "price": 600.0,
+        "stock": 1000,
+        "type": "Saham",
+        "companyName": "Adobe Inc."
+    }
+]
