@@ -1,13 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+
 </head>
-<body>
-    <%- include(`./partials/navbar.ejs`) %>
-    <h1>Home</h1>
-    
+
+<body id="page-top">
+    <!-- Navigation -->
+    <%- include('./partials/navbar') %>
+
+        <!-- Masthead -->
+        <header class="masthead">
+            <div class="masthead-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto masthead-content">
+                        <h1 class="text-uppercase">Finance Market - Your Trusted Source for Financial Insights</h1>
+                        <p class="lead">Explore our curated financial themes and insights tailored to your needs.</p>
+                        <a class="btn btn-primary btn-xl" href="#about">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- About -->
+        <section class="page-section bg-primary text-white" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h2 class="mt-0">We've got what you need!</h2>
+                        <hr class="divider light my-4">
+                        <p class="text-white-50">Finance Market offers a wide range of financial services and solutions
+                            designed to meet your unique requirements. Get started with us today!</p>
+                        <a class="btn btn-light btn-xl" href="#services">Get Started!</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="mt-0">At Your Service</h2>
+                    <hr class="divider my-4">
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <i class="bi-gem fs-1 text-primary mb-4"></i>
+                            <h3 class="h4 mb-2">Robust Financial Insights</h3>
+                            <p class="text-muted mb-0">Our insights are regularly updated to ensure accuracy and
+                                relevance.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <i class="bi-laptop fs-1 text-primary mb-4"></i>
+                            <h3 class="h4 mb-2">Up to Date Analysis</h3>
+                            <p class="text-muted mb-0">All analyses are kept current to provide the latest financial
+                                trends.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <i class="bi-globe fs-1 text-primary mb-4"></i>
+                            <h3 class="h4 mb-2">Ready for Deployment</h3>
+                            <p class="text-muted mb-0">You can utilize our strategies as is, or adapt them to your
+                                needs.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <i class="bi-heart fs-1 text-primary mb-4"></i>
+                            <h3 class="h4 mb-2">Crafted with Dedication</h3>
+                            <p class="text-muted mb-0">Our solutions are driven by dedication to excellence and client
+                                success.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-light py-5">
+            <div class="container">
+                <div class="small text-muted text-center">&copy; 2024 - Finance Market</div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap JS Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
