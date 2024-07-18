@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <%- include(`./partials/navbar.ejs`) %>
+    <h2>Register</h2>
+    <form action="" method="post">
+        <label for="">Username</label><br>
+        <input type="text" name="username" id=""><br><br>
+        <label for="">Password</label><br>
+        <input type="text" name="password" id=""><br><br>
+        <label for="">Email</label><br>
+        <input type="text" name="email" id=""><br><br>
+        <label for="">Role:</label>
+        <select name="role" id="">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select><br><br>
+        <button>Submit</button>
+    </form>
+</body>
+</html>
