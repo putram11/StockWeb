@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stocks</title>
+</head>
+<body>
+    <%- include(`./partials/navbar.ejs`) %>
+    <h2>List Stocks</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Price per Stock</th>
+            <th>Stock</th>
+            <th>Action</th>
+        </tr>
+        <% stocks.forEach(e => { %>
+            <tr>
+                <td><%= e.name %></td>
+                <td><%= e.companyName %></td>
+                <td><%= e.type %></td>
+                <td><%= e.description %></td>
+                <td><%= e.price %></td>
+                <td><%= e.stock %></td>
+                <td>
+                    <a href="/login?msg=Please login first"><button>Buy</button></a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
