@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>Profile</h1>
+    <label for="">Name: <%= user.UserProfile.fullName %></label><br>
+    <label for="">Date of Birth: <%= user.UserProfile.toFormatDate %></label><br>
+    <label for="">Gender: <%= user.UserProfile.gender %></label><br><br>
+    <a href="/updateProfile/<%= user.id %>"><button>Update Profile</button></a>
+    <h3>Stocks List:</h3>
+    <table>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Price per Stock</th>
+                <th>Stock</th>
+                <th>Action</th>
+            </tr>
+            <% user.Stocks.forEach(e => { %>
+                <tr>
+                    <td><%= e.name %></td>
+                    <td><%= e.companyName %></td>
+                    <td><%= e.type %></td>
+                    <td><%= e.description %></td>
+                    <td><%= e.price %></td>
+                    <td><%= e.stock %></td>
+                    <td>
+                        <a href="/"><button>Buy</button></a>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </table>
+</body>
+</html>

@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { formatDate } = require('../helpers/toFormatDate');
 module.exports = (sequelize, DataTypes) => {
   class UserProfile extends Model {
     /**
@@ -13,6 +14,19 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       UserProfile.belongsTo(models.User, { foreignKey: 'userId' });
     }
+
+    get fullName(){
+      return `${this.firstName} ${this.lastName}`
+    }
+
+    get toFormatDate(){
+      return formatDate(this.dateOfBirth)
+    }
+
+    dateForUpdate(values){
+      return values = this.dateOfBirth.toISOString().split(`T`)[0]
+    }
+    
   }
   UserProfile.init({
     firstName: DataTypes.STRING,
@@ -24,7 +38,9 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         model: `Users`,
         key: `userId`
-      }
+      },
+      onDelete: `cascade`,
+      onUpdate: `cascade`
     }
   }, {
     sequelize,

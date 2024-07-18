@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+</head>
+<body>
+    <h1>Profile</h1>
+    <form action="" method="post">
+        <label for="">First Name:</label>
+        <input type="text" name="firstName" id="" value="<%= profile.firstName %>"><br><br>
+        <label for="">Last Name:</label>
+        <input type="text" name="lastName" id="" value="<%= profile.lastName %>"><br><br>
+        <label for="">Date of Birth</label>
+        <input type="date" name="dateOfBirth" id="" value="<%= profile.dateForUpdate(profile.dateOfBirth) %>"><br><br>
+        <select name="gender" id="">
+            <option <%= profile.gender == `Male` ? `selected`: `` %>>Male</option>
+            <option <%= profile.gender == `Female` ? `selected`: `` %>>Female</option>
+            <option <%= profile.gender == `Other` ? `selected`: `` %>>Other</option>
+        </select><br><br>
+        <button>Submit</button>
+    </form>
+</body>
+</html>
