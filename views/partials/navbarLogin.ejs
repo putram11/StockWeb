@@ -1,0 +1,7 @@
+<nav>
+    <% if (session.role == `user`) { %>
+        <a href="/openStocks">List Stock</a>
+    <% } %>
+    <a href="/userProfile">Profile</a>
+    <a href="/logout">Logout</a>
+</nav>

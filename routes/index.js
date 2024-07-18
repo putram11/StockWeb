@@ -1,8 +1,7 @@
-const { tester, registerUser, postUser, homePage, loginUser, checkLogin, listStocks, userProfile, createProfile, postProfile, updateProfile, postUpdProfile } = require("../controllers/controller")
+const { registerUser, postUser, homePage, loginUser, checkLogin, listStocks, userProfile, createProfile, postProfile, updateProfile, postUpdProfile, getEditStock, adminStock, postEditStock, buyStock, postBuyInvestment, sellInvestment, logoutSession} = require("../controllers/controller")
 
 const router = require(`express`).Router()
 
-router.get(`/tester`, tester)
 router.get(`/`, homePage)
 router.get(`/stocks`, listStocks)
 router.get(`/register`, registerUser)
@@ -18,10 +17,18 @@ router.use(function (req, res, next) {
         res.redirect(`/login?msg=Please login first`)
     }
 })
-router.get(`/createProfile/:id`, createProfile)
-router.post(`/createProfile/:id`, postProfile)
-router.get(`/userProfile/:id`, userProfile)
-router.get(`/updateProfile/:id`, updateProfile)
-router.post(`/updateProfile/:id`, postUpdProfile)
+router.get(`/logout`, logoutSession)
+router.get(`/createProfile`, createProfile)
+router.post(`/createProfile`, postProfile)
+router.get(`/userProfile`, userProfile)
+router.get(`/updateProfile`, updateProfile)
+router.post(`/updateProfile`, postUpdProfile)
+router.get(`/editStock`, adminStock)
+router.get(`/editStock/:idStock`, getEditStock)
+router.post(`/editStock/:idStock`, postEditStock)
+router.get(`/openStocks`, listStocks)
+router.get(`/openStocks/:idStock`, buyStock)
+router.post(`/openStocks/:idStock`, postBuyInvestment)
+router.get(`/sellStock/:idInvest`, sellInvestment)
 
 module.exports = router

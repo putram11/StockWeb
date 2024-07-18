@@ -17,7 +17,9 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Investment,
         foreignKey: `stockId` 
       });
+      User.hasMany(models.Investment, {foreignKey: `userId`})
     }
+
   }
   User.init({
     username: {
@@ -30,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         notNull: {
           msg: `Username is required`
-        },
+        }
       }
     },
     password: {

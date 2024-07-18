@@ -6,18 +6,19 @@
     <title>Update Profile</title>
 </head>
 <body>
+    <%- include(`./partials/navbarLogin.ejs`) %>
     <h1>Profile</h1>
     <form action="" method="post">
         <label for="">First Name:</label>
-        <input type="text" name="firstName" id="" value="<%= profile.firstName %>"><br><br>
+        <input type="text" name="firstName" id="" value="<%= user.UserProfile.firstName %>"><br><br>
         <label for="">Last Name:</label>
-        <input type="text" name="lastName" id="" value="<%= profile.lastName %>"><br><br>
+        <input type="text" name="lastName" id="" value="<%= user.UserProfile.lastName %>"><br><br>
         <label for="">Date of Birth</label>
-        <input type="date" name="dateOfBirth" id="" value="<%= profile.dateForUpdate(profile.dateOfBirth) %>"><br><br>
+        <input type="date" name="dateOfBirth" id="" value="<%= user.UserProfile.dateForUpdate(user.UserProfile.dateOfBirth) %>"><br><br>
         <select name="gender" id="">
-            <option <%= profile.gender == `Male` ? `selected`: `` %>>Male</option>
-            <option <%= profile.gender == `Female` ? `selected`: `` %>>Female</option>
-            <option <%= profile.gender == `Other` ? `selected`: `` %>>Other</option>
+            <option <%= user.UserProfile.gender == `Male` ? `selected`: `` %>>Male</option>
+            <option <%= user.UserProfile.gender == `Female` ? `selected`: `` %>>Female</option>
+            <option <%= user.UserProfile.gender == `Other` ? `selected`: `` %>>Other</option>
         </select><br><br>
         <button>Submit</button>
     </form>

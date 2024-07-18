@@ -12,11 +12,12 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      value: {
-        type: Sequelize.FLOAT
+      heldStock: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
-      description: {
-        type: Sequelize.STRING
+      value: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

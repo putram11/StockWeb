@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Stock</title>
+</head>
+<body>
+    <%- include(`./partials/navbarLogin.ejs`) %>
+    <h2>Edit Stock</h2>
+    <form action="" method="post">
+        <label for="">Name: </label><br>
+        <input type="text" name="name" id="" value="<%= stock.name %>"><br><br>
+        <label for="">Company: </label><br>
+        <input type="text" name="companyName" id="" value="<%= stock.companyName %>"><br><br>
+        <label for="">Type: </label><br>
+        <select name="type" id="">
+            <option <%= stock.type == `Saham1` ? `selected`: `` %>>Saham1</option>
+            <option <%= stock.type == `Saham2` ? `selected`: `` %>>Saham2</option>
+            <option <%= stock.type == `Saham3` ? `selected`: `` %>>Saham3</option>
+        </select><br><br>
+        <label for="">Description: </label><br>
+        <input type="text" name="description" id="" value="<%= stock.description %>"><br><br>
+        <label for="">Price per Stock: </label><br>
+        <input type="number" name="price" id="" value="<%= stock.price %>"><br><br>
+        <label for="">Stock: </label><br>
+        <input type="number" name="stock" id="" value="<%= stock.stock %>"><br><br>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

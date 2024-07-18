@@ -3,22 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stocks</title>
+    <title>Edit Stock</title>
 </head>
 <body>
-    <% if (!session) { %>
-        <%- include(`./partials/navbar.ejs`) %>
-    <% } %>
-    <% if (session) { %>
-        <%- include(`./partials/navbarLogin.ejs`) %>
-    <% } %>
-    <h2>List Stocks</h2>
-    <form action="">
-        <a href="/stocks">All</a>
-        <a href="/stocks?type=Saham1">Saham1</a>
-        <a href="/stocks?type=Saham2">Saham2</a>
-        <a href="/stocks?type=Saham3">Saham3</a>
-    </form>
+    <%- include(`./partials/navbarLogin.ejs`) %>
+    <h2>Edit Stock</h2>
+    <a href="/editStock">All</a>
+    <a href="/editStock/?type=Saham1">Saham1</a>
+    <a href="/editStock/?type=Saham2">Saham2</a>
+    <a href="/editStock/?type=Saham3">Saham3</a>
     <table>
         <tr>
             <th>Name</th>
@@ -38,12 +31,7 @@
                 <td><%= e.price %></td>
                 <td><%= e.stock %></td>
                 <td>
-                    <% if (session) { %>
-                        <a href="/openStocks/<%= e.id %>"><button>Buy</button></a>
-                    <% } %>
-                    <% if (!session) { %>
-                        <a href="/login?msg=Please login first"><button>Buy</button></a>
-                    <% } %>
+                    <a href="/editStock/<%= e.id %>"><button>Edit</button></a>
                 </td>
             </tr>
         <% }) %>

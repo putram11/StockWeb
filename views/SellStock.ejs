@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Stock</title>
+</head>
+<body>
+    <h2>Sell Stock</h2><br>
+    <form action="" method="post">
+        <h2><%= investment.Stock.name %></h2>
+        <h3><%= investment.Stock.companyName %></h3>
+        <p>Description: <%= investment.Stock.description %></p>
+        <p>Price per stock: <%= investment.Stock.price %></p>
+        <p>Held Stock: <%= investment.heldStock %></p>
+        <button>Submit</button>
+    </form>
+    <a href="/openStocks">
+        <button>Cancel</button>
+    </a>
+    
+</body>
+</html>
