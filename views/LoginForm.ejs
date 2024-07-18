@@ -16,27 +16,6 @@
             /* Adjust based on your navbar height */
         }
 
-        .navbar {
-            background-color: #343a40;
-            /* Warna abu-abu tua */
-        }
-
-        .navbar-brand,
-        .navbar-nav .nav-link {
-            color: #fff;
-            /* Warna teks putih */
-        }
-
-        .navbar-nav .nav-link {
-            padding-right: 1rem;
-            padding-left: 1rem;
-        }
-
-        .navbar-brand:hover,
-        .navbar-nav .nav-link:hover {
-            color: #ffc107;
-            /* Warna teks kuning saat hover */
-        }
 
         /* Login Form Styles */
         .login-container {
@@ -61,58 +40,42 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="/">Finance Market</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%- include('./partials/navbar') %>
 
-    <!-- Login Form -->
-    <div class="login-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <div class="login-form">
-                        <h2>Login</h2>
-                        <% if (msg) { %>
-                            <p>
-                                <%= msg %>
-                            </p>
-                            <% } %>
+        <!-- Login Form -->
+        <div class="login-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="login-form">
+                            <h2>Login</h2>
+                            <% if (msg) { %>
+                                <p>
+                                    <%= msg %>
+                                </p>
+                                <% } %>
 
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="inputEmail" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" id="inputEmail"
-                                            placeholder="Enter your email">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="inputPassword" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="inputPassword"
-                                            placeholder="Enter your password">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </form>
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="inputEmail" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" id="inputEmail"
+                                                placeholder="Enter your email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="inputPassword" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="inputPassword"
+                                                placeholder="Enter your password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                    </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap JS Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

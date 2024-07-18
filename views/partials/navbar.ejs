@@ -1,11 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<style>
+    /* Customize your styles here */
+    body {
+        padding-top: 56px;
+        /* Adjust based on your navbar height */
+    }
+
+    .navbar {
+        background-color: #343a40;
+        /* Warna abu-abu tua */
+    }
+
+    .navbar-brand,
+    .navbar-nav .nav-link {
+        color: #fff;
+        /* Warna teks putih */
+    }
+
+    .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .navbar-brand:hover,
+    .navbar-nav .nav-link:hover {
+        color: #ffc107;
+        /* Warna teks kuning saat hover */
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/"> Finance Market</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
