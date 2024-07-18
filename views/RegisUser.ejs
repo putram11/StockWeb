@@ -1,26 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <style>
+        body {
+            background-color: #0b132b;
+            color: #f8f9fa;
+            padding-top: 56px;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #1c2541;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3a506b;
+            color: #f8f9fa;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5a769a;
+        }
+    </style>
 </head>
+
 <body>
-    <%- include(`./partials/navbar.ejs`) %>
-    <h2>Register</h2>
-    <form action="" method="post">
-        <label for="">Username</label><br>
-        <input type="text" name="username" id=""><br><br>
-        <label for="">Password</label><br>
-        <input type="text" name="password" id=""><br><br>
-        <label for="">Email</label><br>
-        <input type="text" name="email" id=""><br><br>
-        <label for="">Role:</label>
-        <select name="role" id="">
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-        </select><br><br>
-        <button>Submit</button>
-    </form>
+    <div class="container">
+            <h2>Register</h2>
+            <form action="" method="post">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" required>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+                <label for="role">Role:</label>
+                <select name="role" id="role" required>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+                <button type="submit">Submit</button>
+            </form>
+    </div>
 </body>
+
 </html>

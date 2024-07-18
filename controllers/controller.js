@@ -1,180 +1,341 @@
-const {User, Stock, Investment, UserProfile} = require(`../models/index`)
-const bcrypt = require(`bcryptjs`)
+const { User, Stock, Investment, UserProfile } = require(`../models/index`)
+const bcrypt = require(`bcryptjs`);
+const MailSlurp = require('mailslurp-client').default;
+const apiKey = 'aa9afe15df090811de543c6a332aff51113d18198e4372eee3cd864aff0912df';
+const mailslurp = new MailSlurp({ apiKey });
+
 
 class Controller {
-    static async tester(req, res){
-        try{
-            const user = await User.findAll({
-                include: Stock
-            })
-            res.send(user)
-        }
-        catch(err){
-            console.log(err)
-            res.send(err)
-        }
-    }
-
-    static async homePage(req, res){
-        try{
+    static async homePage(req, res) {
+        try {
             res.render(`HomePage`)
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
 
-    static async listStocks(req, res){
-        try{
-            const stocks = await Stock.findAll({
+    static async listStocks(req, res) {
+        try {
+            const session = req.session.user
+            const { type } = req.query
+            let opt = {
                 include: User
-            })
-            res.render(`Stocks`, {stocks})
+            }
+            if (type) {
+                opt.where = { type }
+            }
+            const stocks = await Stock.findAll(opt)
+            res.render(`Stocks`, { stocks, session })
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
 
-    static async registerUser(req, res){
-        try{
+    static async registerUser(req, res) {
+        try {
             res.render(`RegisUser`)
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
 
-    static async postUser(req, res){
-        try{
-            const {username, password, email, role} = req.body
-            User.create({username, password, email, role});
+    static async postUser(req, res) {
+        try {
+            const { username, password, email, role } = req.body
+
+            const newUser = await User.create({ username, password, email, role });
+
+            console.log(req.body);
+
+            // Buat inbox baru menggunakan MailSlurp
+            const inbox = await mailslurp.createInbox();
+
+            // Kirim email konfirmasi
+            await mailslurp.sendEmail(inbox.id, {
+                to: [newUser.email], // Gunakan newUser.email bukan User.email
+                subject: 'Automatic Message from Finance Market',
+                body: `Hello ${newUser.username},\n\nTerima kasih sudah mendaftarkan akun di Finance Market. Selamat Trading!\n\nBest regards,\nFinance Market Team`
+            });
+
             res.redirect(`/login?msg=${username} successfully resgistered`)
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
 
-    static async loginUser(req, res){
-        try{
-            const {msg} = req.query
-            res.render(`LoginForm`, {msg})
+    static async loginUser(req, res) {
+        try {
+            const { msg } = req.query
+            res.render(`LoginForm`, { msg })
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
 
-    static async checkLogin(req, res){
-        try{
-            const {username, password} = req.body;
+    static async checkLogin(req, res) {
+        try {
+            const { username, password } = req.body;
             const user = await User.findOne({
-                where: {username},
+                where: { username },
                 include: UserProfile
             })
-            console.log(user)
-            if(user){
+            if (user) {
                 const checkPassword = bcrypt.compareSync(password, user.password);
-                if(checkPassword){
+                if (checkPassword) {
                     req.session.user = {
                         id: user.id,
                         role: user.role,
                         username: user.username
                     }
-                    if(user.UserProfile){
-                        return res.redirect(`/userProfile/${user.id}`)
+                    if (user.UserProfile) {
+                        return res.redirect(`/userProfile`)
                     }
-                    else{
-                        return res.redirect(`/createProfile/${user.id}`)
+                    else {
+                        return res.redirect(`/createProfile`)
                     }
                 }
-                else{
+                else {
                     return res.redirect(`/login?msg=incorrect password`)
                 }
             }
-            else{
+            else {
                 return res.redirect(`/login?msg=username not found`)
             }
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
 
-    static async createProfile(req, res){
-        try{
-            const {id} = req.params
-            const user = User.findByPk(id)
-            res.render(`CreateProfile`, {user})
+    static async logoutSession(req, res) {
+        try {
+            req.session.user = undefined
+            res.redirect(`/login`)
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
 
-    static async postProfile(req, res){
-        try{
-            const {id} = req.params
-            const {firstName, lastName, dateOfBirth, gender} = req.body;
-            UserProfile.create({firstName, lastName, dateOfBirth, gender, userId: id})
-            res.redirect(`/userProfile/${id}`)
+    static async createProfile(req, res) {
+        try {
+            const session = req.session.user
+            const user = User.findByPk(session.id)
+            res.render(`CreateProfile`, { user })
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
 
-    static async userProfile(req, res){
-        try{
-            const{id} = req.params
-            const user = await User.findByPk(id, {
-                include: [Stock, UserProfile]
+    static async postProfile(req, res) {
+        try {
+            const session = req.session.user
+            const { firstName, lastName, dateOfBirth, gender } = req.body;
+            UserProfile.create({ firstName, lastName, dateOfBirth, gender, userId: session.id })
+            res.redirect(`/userProfile`)
+        }
+        catch (err) {
+            console.log(err)
+            res.send(err)
+        }
+    }
+
+    static async userProfile(req, res) {
+        try {
+            const { msg } = req.query
+            const session = req.session.user
+            const user = await User.findByPk(session.id, {
+                include: [UserProfile]
             })
-            res.render(`UserProfile`, {user})
-        }
-        catch(err){
-            console.log(err)
-            res.send(err)
-        }
-    }
-
-    static async updateProfile(req, res){
-        try{
-            const {id} = req.params;
-            const profile = await UserProfile.findOne({
-                where: {userId: id}
+            const investment = await Investment.findAll({
+                attributes: [`id`, `name`, `heldStock`, `value`, `userId`, `stockId`],
+                where: { userId: session.id }
             })
-            res.render(`UpdateProfile`, {profile})
+            res.render(`UserProfile`, { user, session, msg, investment })
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
 
-    static async postUpdProfile(req, res){
-        try{
-            const {id} = req.params;
+    static async updateProfile(req, res) {
+        try {
+            const session = req.session.user
+            const user = await User.findOne({
+                where: { id: session.id },
+                include: UserProfile
+            })
+            res.render(`UpdateProfile`, { user, session })
+        }
+        catch (err) {
+            console.log(err)
+            res.send(err)
+        }
+    }
+
+    static async postUpdProfile(req, res) {
+        try {
+            const session = req.session.user
             UserProfile.update(req.body, {
-                where: {userId: id}
+                where: { userId: session.id }
             })
-            console.log(req.body)
-            res.redirect(`/userProfile/${id}`)
+            res.redirect(`/userProfile`)
         }
-        catch(err){
+        catch (err) {
             console.log(err)
             res.send(err)
         }
     }
+
+    static async adminStock(req, res) {
+        try {
+            const { type } = req.query
+            const session = req.session.user
+            let opt = {
+                include: {
+                    model: User
+                }
+            }
+            if (type) {
+                opt.where = { type }
+            }
+            const stocks = await Stock.findAll(opt)
+            const user = await User.findByPk(session.id)
+            // res.send(stocks)
+            res.render(`AdminStock`, { stocks, session, user })
+        }
+        catch (err) {
+            console.log(err)
+            res.send(err)
+        }
+    }
+
+    static async getEditStock(req, res) {
+        try {
+            const { idStock } = req.params;
+            const session = req.session.user;
+            const stock = await Stock.findByPk(idStock)
+            const user = await User.findByPk(session.id)
+            res.render(`EditStock`, { stock, session, user })
+        }
+        catch (err) {
+            console.log(err)
+            res.send(err)
+        }
+    }
+
+    static async postEditStock(req, res) {
+        try {
+            const { idStock } = req.params;
+            const session = req.session.user
+            await Stock.update(req.body, {
+                where: { id: idStock }
+            })
+            res.redirect(`/editStock`)
+        }
+        catch (err) {
+            console.log(err)
+            res.send(err)
+        }
+    }
+
+    static async buyStock(req, res) {
+        try {
+            const { idStock } = req.params;
+            const session = req.session.user
+            const stock = await Stock.findByPk(idStock)
+            res.render(`BuyStock`, { stock, session })
+        }
+        catch (err) {
+            console.log(err)
+            res.send(err)
+        }
+    }
+
+    static async postBuyInvestment(req, res) {
+        try {
+            const { idStock } = req.params;
+            const { bought } = req.body
+            const session = req.session.user;
+            const stock = await Stock.findByPk(idStock)
+            await Stock.update({ stock: stock.stock - bought }, {
+                where: { id: idStock }
+            })
+            await Investment.create({
+                name: stock.name,
+                heldStock: 0 + bought,
+                value: stock.price * bought,
+                userId: session.id,
+                stockId: idStock
+            })
+            res.redirect(`/userProfile?msg=Stock successfully bought`)
+        }
+        catch (err) {
+            console.log(err)
+            res.send(err)
+        }
+    }
+
+    static async getSellInvestment(req, res) {
+        try {
+            const { idInvest } = req.params;
+            const investment = await Investment.findByPk(idInvest, {
+                include: Stock
+            })
+            console.log(investment)
+            res.render(`SellStock`, { investment })
+        }
+        catch (err) {
+            console.log(err)
+            res.send(err)
+        }
+    }
+
+    static async sellInvestment(req, res) {
+        try {
+            const { idInvest } = req.params;
+            const invest = await Investment.findOne({
+                where: { id: idInvest },
+                include: Stock
+            })
+            await Investment.destroy({
+                where: { id: idInvest }
+            })
+            await Stock.update({ stock: invest.Stock.stock + invest.heldStock }, {
+                where: { id: invest.stockId }
+            })
+            res.redirect(`/userProfile`)
+        }
+        catch (err) {
+            console.log(err)
+            res.send(err)
+        }
+    }
+
+    // static async postSellInvestment(req, res){
+    //     try{
+    //         const {bought} = req.body
+    //     }
+    //     catch(err){
+    //         console.log(err)
+    //         res.send(err)
+    //     }
+    // }
 }
 
 module.exports = Controller
