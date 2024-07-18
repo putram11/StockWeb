@@ -1,23 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sell Stock</title>
+    <style>
+        body {
+            background-color: #0b132b;
+            color: #f8f9fa;
+            padding-top: 56px;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #1c2541;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        h2,
+        h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #3a506b;
+            color: #f8f9fa;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #5a769a;
+        }
+
+        .cancel-btn {
+            display: inline-block;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-    <h2>Sell Stock</h2><br>
-    <form action="" method="post">
-        <h2><%= investment.Stock.name %></h2>
-        <h3><%= investment.Stock.companyName %></h3>
-        <p>Description: <%= investment.Stock.description %></p>
-        <p>Price per stock: <%= investment.Stock.price %></p>
-        <p>Held Stock: <%= investment.heldStock %></p>
-        <button>Submit</button>
-    </form>
-    <a href="/openStocks">
-        <button>Cancel</button>
-    </a>
-    
+    <div class="container">
+        <h2>Sell Stock</h2><br>
+        <form action="" method="post">
+            <h2>
+                <%= investment.Stock.name %>
+            </h2>
+            <h3>
+                <%= investment.Stock.companyName %>
+            </h3>
+            <p>Description: <%= investment.Stock.description %>
+            </p>
+            <p>Price per stock: <%= investment.Stock.price %>
+            </p>
+            <p>Held Stock: <%= investment.heldStock %>
+            </p>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="/openStocks" class="cancel-btn">
+            <button>Cancel</button>
+        </a>
+    </div>
 </body>
+
 </html>

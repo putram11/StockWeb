@@ -48,7 +48,6 @@ class Controller {
     static async postUser(req, res) {
         try {
             const { username, password, email, role } = req.body
-            await User.create({ username, password, email, role });
 
             const newUser = await User.create({ username, password, email, role });
 
