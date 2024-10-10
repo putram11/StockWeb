@@ -1,6 +1,3 @@
-Terima kasih atas klarifikasinya! Jika **watchlist saham** dan **notifikasi & peringatan harga** belum tersedia dalam proyek **WebStock** saat ini, berikut adalah versi perbaikan dari README yang mencerminkan fitur yang ada tanpa menyertakan fitur yang tidak tersedia:
-
----
 
 # WebStock - Jual Beli Stock
 
